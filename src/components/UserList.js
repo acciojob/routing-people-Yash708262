@@ -1,34 +1,19 @@
-import React, {useState, useEffect} from 'react'
-import "regenerator-runtime/runtime";
+import React from "react";
 import { Link } from "react-router-dom";
 
-
-
-const UserList = () => {
-
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        const fetchedData = async () => {
-            const res = await fetch('https://jsonplaceholder.typicode.com/users');
-            const json = await res.json();
-            console.log(json)
-            setData(json)
-        }
-        fetchedData()
-    }, [])
+const UserList = ({ users }) => {
   return (
     <div>
-        <h1>User List</h1>
-        <ul>
-            {data.map((i) => (
-                 <li key={i.id}>
-                   <Link to={`/users/${i.id}`}>{i.name}</Link>
-                 </li>
-            ))}
-        </ul>
+      <h1>User List</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <Link to={`/users/${user.id}`}>{user.name}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default UserList
+export default UserList;
