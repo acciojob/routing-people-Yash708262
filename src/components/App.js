@@ -9,14 +9,15 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setTimeout(() => {
     const fetchUsers = async () => {
-      setLoading(true);
       const res = await fetch("https://jsonplaceholder.typicode.com/users");
       const data = await res.json();
       setUsers(data);
       setLoading(false);
     };
     fetchUsers();
+  }, 100); 
   }, []);
 
   return (
