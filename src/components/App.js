@@ -6,7 +6,6 @@ import "regenerator-runtime/runtime";
 
 const App = () => {
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -21,16 +20,12 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
+   
         <Routes>
           <Route path="/" element={<UserList users={users} />} />
           <Route path="/users/:id" element={<UserDetail users={users} />} />
         </Routes>
-      )}
-    </div>
+     
   );
 };
 
